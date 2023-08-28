@@ -7,11 +7,12 @@ import com.market.projeto.Cartao;
 import com.market.projeto.Endereco;
 
 import pessoa.Cliente;
+import pessoa.Funcionario;
 
 public class Menu {
     
     String  frases[] = {"Ver lista de produtos", "Ver cartoes", "Adicionar novo cliente",
-        "Adicionar novo produto",};
+        "Adicionar novo produto","Adicionar Funcionarios"};
 
     public int opcoes (){
         int escolha;

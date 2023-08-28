@@ -38,6 +38,7 @@ public class ProjetoApplication {
 		Produto nSwitch = new Produto("Switch", "Usado", 50.00);
 	
 		ArrayList <Produto> lista_produto = new ArrayList<>();
+		ArrayList <Funcionario> lista_Funcionarios = new ArrayList<>();
 		
 		lista_produto.add(bola);
 		lista_produto.add(apito);
@@ -72,13 +73,16 @@ public class ProjetoApplication {
 				case 4:
 					menu.add_produto(lista_produto);
 					break;
+				case 5:
+					menu.add_Funcionarios(lista_Funcionarios);
+					break;
 				case 0:
 					terminou = true;
 					break;
 				default :
 					escolha = menu.opcoes();
-				}	
 			}
+		}
 
 		}
 		public static String logar(ArrayList<Cliente> lista_cliente){
