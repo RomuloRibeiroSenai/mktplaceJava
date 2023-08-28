@@ -127,5 +127,57 @@ public class Menu {
                 System.out.println("Cadastrado com sucesso");
             return lista_produto;
         }
+        public ArrayList<Funcionario> add_Funcionarios(ArrayList<Funcionario> lista_Funcionarios){
+            Scanner sc8 = new Scanner(System.in);
+            Scanner sc9 = new Scanner(System.in);
+            String nome,cpf,dataNasc,login,senha;
+            String end_rua, end_bairro, end_cidade, end_pais, end_complemento;
+            String cartao_nome,cartao_numero,cartao_dataValidade,cartao_cpf;
+            int cartao_cvv,end_num;
+            String ctps,matricula;
+          
+            System.out.println("Digite o nome do Funcionário:");
+            nome = sc8.nextLine();
+            System.out.println("Digite seu cpf:");
+            cpf = sc8.nextLine();
+            cartao_cpf= cpf;
+            System.out.println("Digite a data de nascimento:");
+            dataNasc = sc8.nextLine();
+            System.out.println("Digite a sua CTPS:");
+            ctps = sc8.nextLine();
+            System.out.println("Digite a sua matricula: ");
+            matricula = sc8.nextLine();
+            System.out.println("Digite a rua:");
+            end_rua = sc8.nextLine();
+            System.out.println("Digite o numero da sua casa: ");
+            end_num = sc9.nextInt();
+            System.out.println("Digite o seu bairro:");
+            end_bairro = sc8.nextLine();
+            System.out.println("Digite a sua cidade:");
+            end_cidade = sc8.nextLine();
+            System.out.println("Digite o seu País:");
+            end_pais = sc8.nextLine();
+            System.out.println("Informe algum complemento para o seu endereço:");
+            end_complemento = sc8.nextLine();
+            System.out.println("Digite um login:");
+            login = sc8.nextLine();
+            System.out.println("Digite uma senha");
+            senha = sc8.nextLine();
+            System.out.println("Agora Para finalizarmos precisamos que nos informe um cartão valido\nDigite o numero do seu cartão");
+            cartao_numero = sc8.nextLine();
+            System.out.println("Digite o codigo de segurança do cartão");
+            cartao_cvv = sc9.nextInt();
+            System.out.println("Digite a data de validade do cartão");
+            cartao_dataValidade = sc8.nextLine();
+            System.out.println("agora para facilitar na sua proxima compra de um nome para o cartão registrado");
+            cartao_nome = sc8.nextLine();
+
+            Cartao cartao = new Cartao(cartao_numero, cartao_nome, cartao_dataValidade, cartao_cvv, cartao_cpf);
+            Endereco endereco = new Endereco(end_rua, end_bairro, end_num, end_cidade, end_pais, end_complemento);
+            Funcionario Funcionario = new Funcionario(nome, cpf, dataNasc, endereco, login, senha, ctps, matricula, cartao);
+            lista_Funcionarios.add(Funcionario);
+            System.out.println("Cliente cadastrado");
+            return lista_Funcionarios;     
+        }
     }
   

@@ -24,7 +24,11 @@ public class ProjetoApplication {
 
 		ArrayList <Cliente> lista_cliente = new ArrayList<>();
 		Cliente pessoa = new Cliente("Lucas", "45454", "12/2/87", endereco, "Riba", "Batman", cartao);
+		Cliente pessoa1 = new Cliente("Silvia", "12457896", "25/12/2000", endereco, "admin", "admin", cartao);
+
+		
 		lista_cliente.add(pessoa);
+		lista_cliente.add(pessoa1);
 		
 		Produto bola = new Produto("Bola", "Bola redonda cheia", 120.00);
 		Produto apito = new Produto("Apito", "Apito de índio ", 20.00);
@@ -90,11 +94,9 @@ public class ProjetoApplication {
 				 & senha.equals(lista_cliente.get(i).getSenha())){					
 						System.out.println("\nVocê está sendo direcionado\n");								
 						return lista_cliente.get(i).getCpf(); // retorna o cpf pra gente saber qual cliente esta logado
-				} else {
-					System.out.println("\nLogin ou Senha incorretos\n");
-					return "0";
-				}
-			}			
+				} 
+			}
+			System.out.println("\nLogin ou Senha incorretos\n");			
 			return "0";
 		}
 	}
