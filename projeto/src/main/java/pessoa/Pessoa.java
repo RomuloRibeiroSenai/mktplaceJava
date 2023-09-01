@@ -7,15 +7,25 @@ public class Pessoa {
     protected String nome;
     protected String cpf;
     protected String dataNasc;
-    protected Endereco endereco;
+    protected static Endereco endereco;
     protected String login;
     protected String senha;
-    protected Cartao cartao;
+    protected static Cartao cartao;
     
+    public Pessoa (String nome, String cpf, String dataNasc, Endereco endereco, String login, String senha, Cartao cartao) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNasc = dataNasc;
+        this.endereco = endereco;
+        this.login = login;
+        this.senha = senha;
+        this.cartao = cartao;
+    
+    }
     public Cartao getCartao() {
         return cartao;
     }
-
+    
     public void setCartao(Cartao cartao) {
         this.cartao = cartao;
     }
@@ -70,16 +80,6 @@ public class Pessoa {
 
 
 
-    public Pessoa (String nome, String cpf, String dataNasc, Endereco endereco, String login, String senha, Cartao cartao) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNasc = dataNasc;
-        this.endereco = endereco;
-        this.login = login;
-        this.senha = senha;
-        this.cartao = cartao;
-
-    }
 
     
 }

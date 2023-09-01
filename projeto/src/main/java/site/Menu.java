@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.market.projeto.Cartao;
 import com.market.projeto.Endereco;
 
+import enums.UnidadeFederal;
 import pessoa.Cliente;
 import pessoa.Funcionario;
 
@@ -16,13 +17,13 @@ public class Menu {
 
     public int opcoes (){
         int escolha;
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in); // eu tinha jogado em escopo global, e ela rodou. sem precisar criar uma scannr para 
 
         for (int i = 0; i < frases.length; i++){
             System.out.println((i + 1) + ". " + frases[i]);
         }
         // poderia colocar essa frase e da linha 31 na array mas ia mexer no loop de cima 
-        System.out.println("\nEscolha uma opção\n0 para sair");
+        System.out.println("0 para sair\nEscolha uma opção");
         escolha = sc.nextInt();
         return escolha;
     }
@@ -64,6 +65,8 @@ public class Menu {
         String frases2 [] = {"Nome: ", "CPF: ", "Data Nasc:", "Login: ", "Senha: ", "Numero: ", "Data Validade:",
     "CVV: ", "Rua: ", "Bairro: ", "Cidade: ", "País: ", "Complemento: ", "Cadastro iniciado", "Cadastro realizado",
     "Precisamos de um cartão", "Precisamos de um endereço"};
+        // nova variavel pra escolha do UF
+        int escolha_UF ;
 
         System.out.println(frases2[13] + "\n" + frases2[0]);
         nome = sc4.nextLine();
@@ -95,11 +98,19 @@ public class Menu {
         end_complemento = sc4.nextLine();
         System.out.println(frases2[5]);
         end_num = sc5.nextInt();
+        System.out.println("Escoha um estado: ");
+        for (UnidadeFederal estado: UnidadeFederal.values() ){
+            System.out.println((estado.ordinal() + 1) + ": " + estado);
+        }
+        System.out.println("Escolha pelo número");
+        escolha_UF = sc5.nextInt();
+        UnidadeFederal uf_escolhido = UnidadeFederal.values()[escolha_UF - 1];
+        System.out.println("Voce escolheu o estado:" + uf_escolhido);
         // cria um cartao e um endereço com as informações pedidas 
         // depois cria um cliente novo e usa os objetos como parametro
 
         Cartao cartao = new Cartao(cartao_numero, cartao_nome, cartao_dataValidade, cartao_cvv, cartao_cpf);
-        Endereco endereco = new Endereco(end_rua, end_bairro, end_num, end_cidade, end_pais, end_complemento);
+        Endereco endereco = new Endereco(end_rua, end_bairro, end_num, end_cidade, end_pais, end_complemento, uf_escolhido);
         Cliente cliente = new Cliente(cartao_nome, cartao_cpf, dataNasc, endereco, login, senha, cartao);
         // adiciona esse cliente novo a lista de cliente
         lista_cliente.add(cliente);
@@ -160,6 +171,13 @@ public class Menu {
             end_pais = sc8.nextLine();
             System.out.println("Informe algum complemento para o seu endereço:");
             end_complemento = sc8.nextLine();
+            System.out.println("Escoha um estado: ");
+            for (UnidadeFederal estado: UnidadeFederal.values() ){
+                System.out.println((estado.ordinal() + 1) + ": " + estado);
+            }
+            System.out.println("Escolha pelo número");
+            int escolha_UF = sc9.nextInt();
+            UnidadeFederal uf_escolhido = UnidadeFederal.values()[escolha_UF - 1];
             System.out.println("Digite um login:");
             login = sc8.nextLine();
             System.out.println("Digite uma senha");
@@ -174,7 +192,7 @@ public class Menu {
             cartao_nome = sc8.nextLine();
 
             Cartao cartao = new Cartao(cartao_numero, cartao_nome, cartao_dataValidade, cartao_cvv, cartao_cpf);
-            Endereco endereco = new Endereco(end_rua, end_bairro, end_num, end_cidade, end_pais, end_complemento);
+            Endereco endereco = new Endereco(end_rua, end_bairro, end_num, end_cidade, end_pais, end_complemento, uf_escolhido);
             Funcionario Funcionario = new Funcionario(nome, cpf, dataNasc, endereco, login, senha, ctps, matricula, cartao);
             lista_Funcionarios.add(Funcionario);
             System.out.println("Cliente cadastrado");
