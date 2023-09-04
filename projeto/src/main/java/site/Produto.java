@@ -1,12 +1,19 @@
 package site;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Produto {
+import interfaces.Cadastro;
+
+
+public class Produto implements Cadastro{
     protected String nome;
     protected String descricao;
     protected double valor;
+    Scanner sc = new Scanner(System.in);
+    Scanner sc2 = new Scanner(System.in);
 
+    private static ArrayList <Produto> lista_produto = new ArrayList<> ();
 
     public String getNome() {
         return nome;
@@ -32,12 +39,11 @@ public class Produto {
         this.valor = valor;
     }
 
-    public Produto( String nome, String descricao, double valor){
+    public Produto(String nome, String descricao, double valor){
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
     }
-    private static ArrayList <Produto> lista_produto = new ArrayList<> ();
 
     static {
         Produto bola = new Produto("Bola", "Bola redonda cheia", 120.00);
@@ -57,9 +63,87 @@ public class Produto {
 
     }
     public static ArrayList<Produto> getLista_Produto() {
-        return lista_produto;
+        return lista_produto;       
+    }
 
+    @Override
+    public void create () {
         
+        String nome, descricao;
+        double valor;
+        System.out.println("Nome do produto: ");
+        nome = sc.nextLine();
+        System.out.println("Descrição: ");
+        descricao = sc.nextLine();
+        System.out.println("Valor: ");
+        valor = sc.nextDouble();
+        Produto novo_produto = new Produto(nome, descricao, valor);
+        lista_produto.add(novo_produto);
+    }
+
+    @Override
+    public void get(String nome) {
+           for (int i = 0; i < Produto.getLista_Produto().size(); i++){
+            if(nome.equals(Produto.getLista_Produto().get(i).getNome())){
+                System.out.println(Produto.getLista_Produto().get(i).getNome());
+                System.out.println(Produto.getLista_Produto().get(i).getDescricao());
+                System.out.println(Produto.getLista_Produto().get(i).getValor());
+            }
+       }
+    
+    }
+
+    @Override
+    public void getAll() {
+        for (int i = 0; i < Produto.getLista_Produto().size(); i++){
+            System.out.println(Produto.getLista_Produto().get(i).getNome());
+            System.out.println(Produto.getLista_Produto().get(i).getDescricao());
+            System.out.println(Produto.getLista_Produto().get(i).getValor()+ "\n");
+        }
+    }
+
+    @Override
+    public void update(String produto) {
+        int escolha;
+        System.out.println("1.Para mudar o valor, 2.Para nome, 3.Descrição");
+        escolha = sc2.nextInt();
+        while (escolha > 3){
+            System.out.println("1.Para mudar o valor, 2.Para nome, 3.Descrição");
+            escolha = sc2.nextInt();
+        }
+        if (escolha == 1){
+            double valor;
+            System.out.println("Insira o valor novo do produto");
+            valor = sc.nextDouble();
+            for (int a = 0; a < Produto.getLista_Produto().size(); a++){
+                if (produto.equals(Produto.getLista_Produto().get(a).getNome())){
+                    Produto.getLista_Produto().get(a).setValor(valor);
+                }
+            }
+        }else if (escolha == 2){
+            String nome;
+            System.out.println("Digite o novo nome: ");
+            nome = sc.nextLine();
+            for (int a = 0; a < Produto.getLista_Produto().size(); a++){
+                if (produto.equals(Produto.getLista_Produto().get(a).getNome())){
+                    Produto.getLista_Produto().get(a).setNome(nome);
+                }
+            }
+        }else {
+            String descricao;
+            System.out.println("Digite a nova descrição: ");
+            descricao = sc.nextLine();
+            for (int a = 0; a < Produto.getLista_Produto().size(); a++){
+                if (produto.equals(Produto.getLista_Produto().get(a).getNome())){
+                    Produto.getLista_Produto().get(a).setDescricao(descricao);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void delete() {
+       
     }
     }
 
