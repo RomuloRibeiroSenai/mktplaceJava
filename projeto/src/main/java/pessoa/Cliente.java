@@ -6,6 +6,7 @@ import java.util.Scanner;
 import com.market.projeto.Cartao;
 import com.market.projeto.Endereco;
 
+import abstrato.Pessoa;
 import interfaces.Cadastro;
 
 public class Cliente extends Pessoa implements Cadastro {

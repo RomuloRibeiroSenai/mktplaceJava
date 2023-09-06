@@ -3,6 +3,7 @@ package pessoa;
 import com.market.projeto.Cartao;
 import com.market.projeto.Endereco;
 
+import abstrato.Pessoa;
 import interfaces.Cadastro;
 
 import java.util.ArrayList;

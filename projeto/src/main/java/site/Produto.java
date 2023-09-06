@@ -143,8 +143,17 @@ public class Produto implements Cadastro{
 
     @Override
     public void delete() {
+
+        String nome_produto;
+        System.out.println("digite o produto que você deseja deletar:");
+        nome_produto = sc.nextLine();
+        for(int i = 0; i<Produto.getLista_Produto().size();i++){
+        if(nome_produto.equals(Produto.getLista_Produto().get(i).getNome())){
+            lista_produto.remove(nome_produto);
+        }
        
     }
     }
+}
 
     
